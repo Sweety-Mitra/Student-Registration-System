@@ -1,0 +1,160 @@
+<!--
+  Student Registration System
+  Features: Add/Edit/Delete, Validation, localStorage, Responsive
+  Author: <Your Name> | Date: <YYYY-MM-DD>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic structure + meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Student Registration System with add, edit, delete, validation, persistence, and responsive display."
+    />
+    <title>Student Registration System</title>
+    <link rel="icon" type="image/x-icon" href="./Images/favicon.ico" />
+    <link rel="icon" href="./Images/favicon-96x96.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Simple top navigation with anchor to Records -->
+    <nav class="top-nav">
+      <div class="brand">
+        <img src="./Images/Sweety_logo.png" alt="Brand Logo" />
+      </div>
+      <ul>
+        <li><a href="#register">Register</a></li>
+        <li><a href="#records">Records</a></li>
+      </ul>
+    </nav>
+
+    <!-- Header with catchy title + brief description -->
+    <header class="page-hero">
+      <h1>Student Registration System</h1>
+      <p>
+        Register students with Name, ID, Email, and Contact Number. Edit or
+        delete records anytime. Your data is saved in your browser.
+      </p>
+    </header>
+
+    <main class="container">
+      <!-- Form and input fields -->
+      <section id="register" class="card">
+        <h2>Register / Edit Student</h2>
+        <form id="studentForm" autocomplete="off" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Student Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="e.g., Riya Sharma"
+                required
+              />
+              <small class="error" id="nameError"></small>
+            </div>
+
+            <div class="field">
+              <label for="studentId">Student ID</label>
+              <!-- Using text + inputmode to keep leading zeros; validation done via JS -->
+              <input
+                id="studentId"
+                name="studentId"
+                type="text"
+                inputmode="numeric"
+                placeholder="e.g., 1023"
+                required
+              />
+              <small class="error" id="studentIdError"></small>
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="e.g., riya@example.com"
+                required
+              />
+              <small class="error" id="emailError"></small>
+            </div>
+
+            <div class="field">
+              <label for="contact">Contact Number</label>
+              <input
+                id="contact"
+                name="contact"
+                type="text"
+                inputmode="numeric"
+                placeholder="10+ digits"
+                required
+              />
+              <small class="error" id="contactError"></small>
+            </div>
+          </div>
+
+          <div class="actions">
+            <!-- Add / Update is toggled by JS -->
+            <button type="submit" id="submitBtn" class="btn primary">
+              Add Student
+            </button>
+            <button type="button" id="updateBtn" class="btn primary" hidden>
+              Update Student
+            </button>
+            <button type="button" id="cancelEditBtn" class="btn" hidden>
+              Cancel
+            </button>
+            <button type="reset" class="btn ghost">Reset</button>
+          </div>
+        </form>
+        <p class="helper-note">
+          Note: Only characters are allowed in the name. Student ID & Contact
+          accept digits only. Contact must have at least 10 digits.
+        </p>
+      </section>
+
+      <!-- Display Section (clear & organized; responsive) -->
+      <section id="records" class="card">
+        <div class="records-header">
+          <h2>Registered Students</h2>
+          <p class="muted">
+            All records are saved to your browser (localStorage) and persist
+            after refresh.
+          </p>
+        </div>
+
+        <!-- The container’s vertical scrollbar is toggled dynamically via JS -->
+        <div id="tableWrap" class="table-wrap">
+          <table class="records-table" aria-describedby="records">
+            <thead>
+              <tr>
+                <th>Student Name</th>
+                <th>Student ID</th>
+                <th>Email</th>
+                <th>Contact No.</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="recordsTbody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <small
+        >© <span id="year"></span> Student Registration System • Built with
+        HTML, CSS & JavaScript</small
+      >
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
