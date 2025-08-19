@@ -1,0 +1,368 @@
+/* Styles for Student Registration System
+   Theme: Indigo → Purple gradient, glassy cards, cyan/purple accents
+   Sections: nav, hero, cards, form, table, responsive
+*/
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+:root {
+  --bg: #0d9488;
+  --bg-alt: #4338ca;
+  --card: rgba(17, 24, 39, 0.85);
+  --muted: #cbd5e1;
+  --text: #f8fafc;
+  --primary: #22d3ee;
+  --primary-600: #06b6d4;
+  --danger: #ef4444;
+  --ok: #22c55e;
+  --border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+    "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  background: linear-gradient(180deg, #312e81, #06b6d4);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Top Nav */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(
+    90deg,
+    rgba(9, 72, 47, 0.9),
+    rgba(37, 181, 169, 0.9)
+  );
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid rgba(7, 7, 7, 0.1);
+}
+.top-nav .brand {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.top-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+.top-nav a {
+  color: #f8fafc;
+  text-decoration: none;
+  opacity: 0.9;
+  transition: color 0.3s ease;
+}
+.top-nav a:hover,
+.top-nav a.active {
+  color: #ffffff;
+  border-bottom: 2px solid #22d3ee;
+  padding-bottom: 2px;
+}
+
+.brand img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+/* Hero */
+.page-hero {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+}
+.page-hero h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+}
+.page-hero p {
+  margin: 0 auto;
+  max-width: 56rem;
+  color: var(--muted);
+}
+
+/* Layout */
+.container {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Cards */
+.card {
+  background: rgba(17, 24, 39, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+  color: #f1f5f9;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+/* Form */
+.card h2 {
+  margin: 0 0 0.75rem 0;
+}
+.card.active-section {
+  border: 2px solid #22d3ee;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+}
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+}
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+label {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+input {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255);
+  color: #000000;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+input:focus {
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.25);
+}
+
+.error {
+  color: var(--danger);
+  min-height: 1.1em;
+  font-size: 0.85rem;
+}
+
+.actions {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.btn {
+  border: 1px solid var(--border);
+  background: #0b1222;
+  color: var(--text);
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn:hover {
+  border-color: var(--primary);
+}
+.btn.primary {
+  background: linear-gradient(90deg, #0d9488, #4338ca);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(67, 56, 202, 0.5);
+}
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #f1f5f9;
+}
+.btn.ghost:hover {
+  border-color: #22d3ee;
+  color: #22d3ee;
+}
+
+/* Records */
+.records-header {
+  display: grid;
+  gap: 0.25rem;
+}
+.records-header .muted {
+  color: var(--muted);
+}
+
+#records .table-wrap {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto; /* enable scroll only here */
+  border-radius: 12px;
+}
+
+.table-wrap {
+  margin-top: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden; /* JS will toggle scrolling here */
+  background: #537bb8;
+}
+
+.records-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.records-table thead {
+  background: #2b3b63;
+}
+.records-table th,
+.records-table td {
+  padding: 0.8rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.records-table th {
+  font-weight: 600;
+  opacity: 0.95;
+}
+.records-table tbody tr:hover {
+  background: rgba(2, 132, 199, 0.12);
+}
+
+#register {
+  overflow-y: hidden;
+}
+
+.action-btns {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.action-btns button {
+  font-size: 0.9rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: #0b1222;
+  color: var(--text);
+}
+.action-btns .edit:hover {
+  border-color: var(--ok);
+}
+.action-btns .delete {
+  color: #ffd5d5;
+}
+.action-btns .delete:hover {
+  border-color: var(--danger);
+}
+
+/* JS adds this class to enable vertical scroll dynamically */
+.table-wrap.scrollable {
+  max-height: 320px; /* controlled scrolling window */
+  overflow-y: auto;
+}
+
+/* Custom scrollbar for better UX */
+.table-wrap.scrollable::-webkit-scrollbar {
+  width: 10px;
+}
+.table-wrap.scrollable::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 20px;
+}
+.table-wrap.scrollable::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Helper text */
+.helper-note {
+  color: var(--muted);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+small {
+  font-size: 1rem;
+}
+
+/* Footer */
+.page-footer {
+  margin: 2rem 0 3rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* ------------------------ RESPONSIVE BREAKPOINTS ------------------------ */
+/* Mobile (≤ 640px) is the default layout: stacked cards, responsive table as cards */
+@media (max-width: 640px) {
+  .records-table thead {
+    display: none;
+  }
+  .records-table,
+  .records-table tbody,
+  .records-table tr,
+  .records-table td {
+    display: block;
+    width: 100%;
+  }
+  .records-table tr {
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+  }
+  .records-table td {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+    gap: 0.25rem 0.75rem;
+    border: none;
+    padding: 0.4rem 0;
+  }
+  .records-table td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-weight: 600;
+  }
+}
+
+/* Tablet (641px–1024px): comfortable spacing, single-column main layout */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Desktop (≥ 1025px): two-column layout form + table side-by-side */
+@media (min-width: 1025px) {
+  .container {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
